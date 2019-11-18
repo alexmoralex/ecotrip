@@ -1,2 +1,38 @@
-<h1>Trips#new</h1>
-<p>Find me in app/views/trips/new.html.erb</p>
+<% if user_signed_in? && current_user.guia %>
+<div class=container style=>
+<div class="row justify-content-md-center">
+<div class="col-4">
+<h1 class="text-center">Nuevo viaje</h1>
+<hr>
+<center>
+<%= form_for @trip do |f| %>
+  <%= f.label :nombre %><br />
+  <%= f.text_field :nombre %><br />
+
+  <%= f.label :descripcion %><br />
+  <%= f.text_area :descripcion %><br />
+
+  <%= f.label :tarifa %><br />
+  <%= f.number_field :tarifa, style:"width: 100px"%> COP<br />
+
+  <%= f.label :duracion %><br />
+  <%= f.number_field :duracion, style:"width: 100px" %> Mins<br />
+
+  <%= f.label :imagen %><br />
+  <%= f.file_field :images, multiple: true %><br /><br />
+
+  <%= f.submit %>
+<% end %>
+</center>
+</div>
+</div>
+</div>
+<% else %>
+<div class="container">
+<div class="row justify-content-md-center">
+<div class="col-6">
+  <img src="/assets/LOGO1.png" width= 100%>
+</div>
+</div>
+</div>
+<% end %>

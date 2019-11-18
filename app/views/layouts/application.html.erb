@@ -7,62 +7,113 @@
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-
+    <style media="screen">
+      .orange-line{
+        border: 2px solid #F96009;
+        width: 50%;
+        margin-top: 0px;
+        padding-bottom: 0px;
+       }
+       .text-footer{
+         text-align: center;
+         color: #555555;
+         font-family: "Arial";
+         font-weight: "500";
+         font-size: 12px;
+         margin-top: -10px;
+         margin-bottom: 0px;
+       }
+       h4{
+         color: white;
+         font-family: "Arial";
+         font-weight: "500";
+         font-size: 12px;
+       }
+    </style>
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
+    <div class="container-fluid" style="padding-bottom: 15px;">
+      <div class="row align-items-end">
+        <div class="col-1">
+          <img src="/assets/Logo-ecotrip.png" style="padding-left: 20px;" width="100px">
+        </div>
+        <div class="col-11">
+          <img class="align-bottom" src="/assets/Slogan-ecot.png" width=800px>
+        </div>
+      </div>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #AECD13; margin-bottom: 30px;">
+  <strong><%= link_to "INICIO", root_path, class:"navbar-brand", style:"color: white;" %></strong>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        <a><%= link_to "Crear viaje", "/trips/new", class:"btn btn-light" %></a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
+
+    <div>
       <% if user_signed_in? %>
- <li><%= link_to current_user.email, edit_user_registration_path %></li>
- <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
-<% else %>
- <li><%= link_to "Sign Up", new_user_registration_path %></li>
- <li><%= link_to "Login", new_user_session_path %></li>
-<% end %>
-    </form>
+       <%= link_to current_user.email, edit_user_registration_path, style:"color:white; text-decoration: none;" %>
+       <%= link_to "Cerrar Sesion", destroy_user_session_path, method: :delete, class:"btn btn-outline-light" %>
+      <% else %>
+       <%= link_to "Registrate", new_user_registration_path, class:"btn btn-outline-light" %>
+       <%= link_to "Inicia Sesion", new_user_session_path, class:"btn btn-outline-light" %>
+      <% end %>
+    </div>
   </div>
 </nav>
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+
     <%= yield %>
 
   </body>
   <!-- Footer -->
-  <footer class="page-footer font-small blue bg-light">
+  <footer class="page-footer", style="position:relative; margin-top: 50px; auto; bottom:0; width:100%;">
 
     <!-- Copyright -->
-    <div class="footer-copyright text-center py-3">© 2018 Copyright:
-      <a href="https://mdbootstrap.com/education/bootstrap/"> MDBootstrap.com</a>
+    <div class="footer-copyright text-center">
+      <hr class="orange-line">
+      <p class="text-footer">COLOMBIA PÁGINAS OFICIALES</p>
     </div>
+    <div class="footer-logos" style="background-color: #AECD13;">
+      <div class="container" style="padding: 20px 0px;">
+        <div class="row">
+          <div class="col-sm-1 col-md-3 col-lg-3">
+            <div class="row">
+              <div class="col-4">
+                <img src="/assets/Logo-parquesNacionales.png" height="80px">
+              </div>
+              <div class="col-8" style="vertical-align: middle;">
+                <h4 style="padding-top: 30px;">PARQUES NACIONALES</h4>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-1 col-md-3 col-lg-3">
+          </div>
+          <div class="col-sm-1 col-md-3 col-lg-3">
+            <div class="row">
+              <div class="col-4">
+                <img src="/assets/Logo-proco.png" height="80px">
+              </div>
+              <div class="col-8">
+                <h4 style="padding-top: 30px;">PROCOLOMBIA</h4>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-1 col-md-3 col-lg-3">
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+
+
     <!-- Copyright -->
 
   </footer>
